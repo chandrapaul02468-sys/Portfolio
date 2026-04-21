@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arli Chandra Paul - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a; /* Professional Navy */
+            --secondary: #3b82f6; /* Modern Blue */
+            --accent: #60a5fa;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation & Hamburger --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--secondary); }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10% 50px;
+            background: radial-gradient(circle at top right, #dbeafe, #f8fafc);
+        }
+
+        .hero-content { flex: 1; padding-right: 50px; }
+
+        .hero-content h4 {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Styling to match your photo */
+        .profile-wrapper {
+            position: relative;
+            width: 380px;
+            height: 380px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Organic shape */
+            border: 8px solid var(--white);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.3);
+            background: var(--secondary);
+        }
+
+        /* --- Grid Sections --- */
+        section { padding: 100px 10%; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .underline {
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--secondary);
+        }
+
+        .project-card h3 { color: var(--primary); margin-bottom: 15px; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            background: #eff6ff;
+            color: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 10% 30px;
+            text-align: center;
+        }
+
+        .contact-info { margin-bottom: 40px; }
+        .contact-info p { opacity: 0.8; margin-bottom: 10px; }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover { transform: scale(1.2); color: var(--accent); }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 140px; }
+            .hero-content { padding-right: 0; margin-top: 50px; }
+            .profile-wrapper { width: 300px; height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.4s ease;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav>
+        <div class="logo">Personal Portfolio</div>
+        <div class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h4>Welcome to my Portfolio</h4>
+            <h1>I'm Arli <span style="color: var(--secondary)">Chandra Paul</span></h1>
+            <p>MBA Business Analytics graduate specializing in data-driven decision making, SQL management, and visual storytelling through interactive dashboards.</p>
+            <a href="#contact" class="btn">Work With Me</a>
+        </div>
+        <div class="hero-image-container">
+            <div class="profile-wrapper">
+                <!-- IMPORTANT: Replace 'profile.jpg' with your actual photo filename -->
+                <img src="./assets/WhatsApp Image 2026-04-20 at 10.36.27 PM.jpeg" alt="Arli Chandra Paul" class="profile-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Skills</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-brands fa-python"></i>
+                <h3>Python</h3>
+                <p>Advanced Data Analysis</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>SQL</h3>
+                <p>Database Architecture</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Power BI</h3>
+                <p>Interactive Dashboards</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Dev</h3>
+                <p>Modern Front-end</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" style="background: #f1f5f9;">
+        <div class="section-header">
+            <h2>My Projects</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Placement Analytics</h3>
+                <p>End-to-end analysis of university hiring trends and student performance metrics.</p>
+                <div class="tags">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Excel</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>D-Mart Finance</h3>
+                <p>Strategic financial evaluation of India's leading retail chain focusing on profitability.</p>
+                <div class="tags">
+                    <span class="tag">Financial Modeling</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Healthcare Analytics</h3>
+                <p>Predictive modeling for diabetes detection and sentiment analysis for mental health.</p>
+                <div class="tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education (Condensed for Design) -->
+    <section id="education">
+        <div class="section-header">
+            <h2>Education</h2>
+            <div class="underline"></div>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="background: white; padding: 25px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid var(--secondary);">
+                <h3 style="color: var(--primary)">MBA (Business Analytics)</h3>
+                <p>Anurag University | 2023 - 2025 | <strong>7.9 CGPA</strong></p>
+            </div>
+            <div style="background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--accent);">
+                <h3 style="color: var(--primary)">B.Com (Computer Applications)</h3>
+                <p>VDA Degree College | 2020 - 2023 | <strong>7.5 CGPA</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="contact-info">
+            <h2>My Contact Info</h2>
+            <br>
+            <p><i class="fa-solid fa-location-dot"></i> Eluru, Andhra Pradesh, India</p>
+            <p><i class="fa-solid fa-envelope"></i> chandrapaul02468@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> +91 8555039963</p>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/arli-chandra-paul-216647334" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/chandrapaul02468-sys" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:chandrapaul02468@gmail.com"><i class="fa-solid fa-paper-plane"></i></a>
+        </div>
+        
+        <p style="font-size: 0.8rem; opacity: 0.6;">&copy; 2024 Arli Chandra Paul. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Toggle Hamburger
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars-staggered');
+            hamburger.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        // Close on Link Click
+        links.forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.querySelector('i').classList.add('fa-bars-staggered');
+            hamburger.querySelector('i').classList.remove('fa-xmark');
+        }));
+
+        // Simple Scroll Animation
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.skill-card, .project-card');
+            cards.forEach(card => {
+                const pos = card.getBoundingClientRect().top;
+                if(pos < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Init cards
+        document.querySelectorAll('.skill-card, .project-card').forEach(c => {
+            c.style.opacity = '0';
+            c.style.transform = 'translateY(30px)';
+            c.style.transition = '0.8s ease-out';
+        });
+    </script>
+</body>
+</html>
